@@ -8,29 +8,29 @@ $VIPassword = "VMware1!"
 
 # Full Path to both the Nested ESXi 7.0 VA, Extracted VCSA 7.0 ISO & NSX-T OVAs
 $NestedESXiApplianceOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\Nested_ESXi7.0_Appliance_Template_v1.ova"
-$VCSAInstallerPath = "C:\Users\Administrator.OPENSO-DC\Downloads\VMware-VCSA-all-7.0.0-16386292"
+$VCSAInstallerPath = "C:\Users\Administrator.OPENSO-DC\Downloads\vcenter-7.0.1"
 $NSXTManagerOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-unified-appliance-3.0.1.0.0.16404476.ova"
 $NSXTEdgeOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-edge-3.0.1.0.0.16404482.ova"
 
 # Nested ESXi VMs to deploy
 $NestedESXiHostnameToIPs = @{
-    "openso-esx-01.lab.local" = "12.12.12.31"
-    "openso-esx-02.lab.local" = "12.12.12.32"
-    "openso-esx-03.lab.local" = "12.12.12.33"
-    "openso-esx-04.lab.local" = "12.12.12.34"
+    "openso-esx-test-01.lab.local" = "14.14.14.31"
+    "openso-esx-test-02.lab.local" = "14.14.14.32"
+    "openso-esx-test-03.lab.local" = "14.14.14.33"
+    "openso-esx-test-04.lab.local" = "14.14.14.34"
 }
 
 # Nested ESXi VM Resources
 $NestedESXivCPU = "4"
-$NestedESXivMEM = "128" #GB
-$NestedESXiCachingvDisk = "150" #GB
-$NestedESXiCapacityvDisk = "250" #GB
+$NestedESXivMEM = "64" #GB
+$NestedESXiCachingvDisk = "100" #GB
+$NestedESXiCapacityvDisk = "150" #GB
 
 # VCSA Deployment Configuration
 $VCSADeploymentSize = "tiny"
-$VCSADisplayName = "openso-vcsa"
-$VCSAIPAddress = "12.12.12.15"
-$VCSAHostname = "openso-vcsa.lab.local" #Change to IP if you don't have valid DNS
+$VCSADisplayName = "openso-vcsa-test"
+$VCSAIPAddress = "14.14.14.15"
+$VCSAHostname = "openso-vcsa-test.lab.local" #Change to IP if you don't have valid DNS
 $VCSAPrefix = "24"
 $VCSASSODomainName = "vsphere.local"
 $VCSASSOPassword = "VMware1!"
@@ -40,24 +40,24 @@ $VCSASSHEnable = "true"
 # General Deployment Configuration for Nested ESXi, VCSA & NSX VMs
 $VMDatacenter = "Datacenter"
 $VMCluster = "Cluster"
-$VMNetwork = "OpensO-Mgmt"
+$VMNetwork = "OpensO-U1-Mgmt"
 $VMDatastore = "iSCSI-10TB"
-$VMNetmask = "255.255.255.0"
-$VMGateway = "12.12.12.1"
+$VMNetmask = "255.255.0.0"
+$VMGateway = "14.14.14.1"
 $VMDNS = "10.197.79.52"
 $VMNTP = "10.128.243.14"
 $VMPassword = "VMware1!"
 $VMDomain = "lab.local"
 $VMSyslog = "12.12.12.13"
-$VMFolder = "Openso-Pacific"
+$VMFolder = "Openso-Pacific-Test"
 # Applicable to Nested ESXi only
 $VMSSH = "true"
 $VMVMFS = "false"
 
 # Name of new vSphere Datacenter/Cluster when VCSA is deployed
-$NewVCDatacenterName = "K8S-Datacenter"
-$NewVCVSANClusterName = "K8S-Cluster"
-$NewVCVDSName = "Mmgmt-K8S-VDS"
+$NewVCDatacenterName = "K8S-Datacenter-Test"
+$NewVCVSANClusterName = "K8S-Cluster-Test"
+$NewVCVDSName = "Mmgmt-K8S-VDS-test"
 $NewVCDVPGName = "DVPG-Management Network"
 
 # Pacific Configuration
@@ -96,16 +96,16 @@ $VlanTransportZoneName = "TZ-VLAN"
 $VlanTransportZoneNameHostSwitchName = "edgeswitch"
 
 # Network Segment
-$NetworkSegmentName = "OpensO-Uplink"
+$NetworkSegmentName = "OpensO-Test-Uplink"
 $NetworkSegmentVlan = "0"
 
 # T0 Gateway
 $T0GatewayName = "T0-Gateway"
-$T0GatewayInterfaceAddress = "192.168.12.2" # should be a routable address
+$T0GatewayInterfaceAddress = "14.15.15.2" # should be a routable address
 $T0GatewayInterfacePrefix = "24"
 $T0GatewayInterfaceStaticRouteName = "Static-Route"
 $T0GatewayInterfaceStaticRouteNetwork = "0.0.0.0/0"
-$T0GatewayInterfaceStaticRouteAddress = "192.168.12.1"
+$T0GatewayInterfaceStaticRouteAddress = "14.15.15.1"
 
 # Uplink Profiles
 $ESXiUplinkProfileName = "ESXi-Host-Uplink-Profile"
@@ -129,16 +129,16 @@ $EdgeClusterName = "Edge-Cluster-01"
 $NSXTMgrDeploymentSize = "small"
 $NSXTMgrvCPU = "6" #override default size
 $NSXTMgrvMEM = "24" #override default size
-$NSXTMgrDisplayName = "openso-nsx-mgr"
-$NSXTMgrHostname = "openso-nsx-mgr.lab.local"
-$NSXTMgrIPAddress = "12.12.12.10"
+$NSXTMgrDisplayName = "openso-nsx-mgr-test"
+$NSXTMgrHostname = "openso-nsx-mgr-test.lab.local"
+$NSXTMgrIPAddress = "14.14.14.10"
 
 # NSX-T Edge Configuration
 $NSXTEdgeDeploymentSize = "large"
 $NSXTEdgevCPU = "8" #override default size
 $NSXTEdgevMEM = "32" #override default size
 $NSXTEdgeHostnameToIPs = @{
-    "openso-nsx-edge" = "12.12.12.11"
+    "openso-nsx-edge-test" = "14.14.14.11"
 }
 
 # Advanced Configurations

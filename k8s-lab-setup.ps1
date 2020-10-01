@@ -2,35 +2,34 @@
 # Website: www.virtuallyghetto.com
 
 # vCenter Server used to deploy vSphere with Kubernetes Lab
-$VIServer = "10.197.79.51"
+$VIServer = "mgmt-vcsa-01.cpbu.corp"
 $VIUsername = "administrator@vsphere.local"
 $VIPassword = "VMware1!"
 
 # Full Path to both the Nested ESXi 7.0 VA, Extracted VCSA 7.0 ISO & NSX-T OVAs
-$NestedESXiApplianceOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\Nested_ESXi7.0_Appliance_Template_v1.ova"
-$VCSAInstallerPath = "C:\Users\Administrator.OPENSO-DC\Downloads\VMware-VCSA-all-7.0.0-16386292"
-$NSXTManagerOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-unified-appliance-3.0.1.0.0.16404476.ova"
-$NSXTEdgeOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-edge-3.0.1.0.0.16404482.ova"
+$NestedESXiApplianceOVA = "C:\Users\william\Desktop\Project-Pacific\Nested_ESXi7.0_Appliance_Template_v1.ova"
+$VCSAInstallerPath = "C:\Users\william\Desktop\Project-Pacific\VMware-VCSA-all-7.0.0-15952498"
+$NSXTManagerOVA = "C:\Users\william\Desktop\Project-Pacific\nsx-unified-appliance-3.0.0.0.0.15946739.ova"
+$NSXTEdgeOVA = "C:\Users\william\Desktop\Project-Pacific\nsx-edge-3.0.0.0.0.15946012.ova"
 
 # Nested ESXi VMs to deploy
 $NestedESXiHostnameToIPs = @{
-    "openso-esx-01.lab.local" = "12.12.12.31"
-    "openso-esx-02.lab.local" = "12.12.12.32"
-    "openso-esx-03.lab.local" = "12.12.12.33"
-    "openso-esx-04.lab.local" = "12.12.12.34"
+    "pacific-esxi-7" = "172.17.31.113"
+    "pacific-esxi-8" = "172.17.31.114"
+    "pacific-esxi-9" = "172.17.31.115"
 }
 
 # Nested ESXi VM Resources
 $NestedESXivCPU = "4"
-$NestedESXivMEM = "128" #GB
-$NestedESXiCachingvDisk = "150" #GB
-$NestedESXiCapacityvDisk = "250" #GB
+$NestedESXivMEM = "24" #GB
+$NestedESXiCachingvDisk = "8" #GB
+$NestedESXiCapacityvDisk = "100" #GB
 
 # VCSA Deployment Configuration
 $VCSADeploymentSize = "tiny"
-$VCSADisplayName = "openso-vcsa"
-$VCSAIPAddress = "12.12.12.15"
-$VCSAHostname = "openso-vcsa.lab.local" #Change to IP if you don't have valid DNS
+$VCSADisplayName = "pacific-vcsa-3"
+$VCSAIPAddress = "172.17.31.112"
+$VCSAHostname = "pacific-vcsa-3.cpbu.corp" #Change to IP if you don't have valid DNS
 $VCSAPrefix = "24"
 $VCSASSODomainName = "vsphere.local"
 $VCSASSOPassword = "VMware1!"
@@ -38,37 +37,37 @@ $VCSARootPassword = "VMware1!"
 $VCSASSHEnable = "true"
 
 # General Deployment Configuration for Nested ESXi, VCSA & NSX VMs
-$VMDatacenter = "Datacenter"
-$VMCluster = "Cluster"
-$VMNetwork = "OpensO-Mgmt"
-$VMDatastore = "iSCSI-10TB"
+$VMDatacenter = "San Jose"
+$VMCluster = "Cluster-01"
+$VMNetwork = "SJC-CORP-MGMT"
+$VMDatastore = "vsanDatastore"
 $VMNetmask = "255.255.255.0"
-$VMGateway = "12.12.12.1"
-$VMDNS = "10.197.79.52"
-$VMNTP = "10.128.243.14"
+$VMGateway = "172.17.31.253"
+$VMDNS = "172.17.31.5"
+$VMNTP = "pool.ntp.org"
 $VMPassword = "VMware1!"
-$VMDomain = "lab.local"
-$VMSyslog = "12.12.12.13"
-$VMFolder = "Openso-Pacific"
+$VMDomain = "cpbu.corp"
+$VMSyslog = "172.17.31.112"
+$VMFolder = "Project-Pacific"
 # Applicable to Nested ESXi only
 $VMSSH = "true"
 $VMVMFS = "false"
 
 # Name of new vSphere Datacenter/Cluster when VCSA is deployed
-$NewVCDatacenterName = "K8S-Datacenter"
-$NewVCVSANClusterName = "K8S-Cluster"
-$NewVCVDSName = "Mmgmt-K8S-VDS"
+$NewVCDatacenterName = "Pacific-Datacenter"
+$NewVCVSANClusterName = "Workload-Cluster"
+$NewVCVDSName = "Pacific-VDS"
 $NewVCDVPGName = "DVPG-Management Network"
 
 # Pacific Configuration
-$StoragePolicyName = "k8s-storage-policy"
-$StoragePolicyTagCategory = "k8s-demo-tag-category"
-$StoragePolicyTagName = "k8s-demo-storage"
+$StoragePolicyName = "pacific-gold-storage-policy"
+$StoragePolicyTagCategory = "pacific-demo-tag-category"
+$StoragePolicyTagName = "pacific-demo-storage"
 $DevOpsUsername = "devops"
 $DevOpsPassword = "VMware1!"
 
 # NSX-T Configuration
-$NSXLicenseKey = "3N2KN-8EHD1-38970-01CKP-04R6Q"
+$NSXLicenseKey = ""
 $NSXRootPassword = "VMware1!VMware1!"
 $NSXAdminUsername = "admin"
 $NSXAdminPassword = "VMware1!VMware1!"
@@ -76,10 +75,10 @@ $NSXAuditUsername = "audit"
 $NSXAuditPassword = "VMware1!VMware1!"
 $NSXSSHEnable = "true"
 $NSXEnableRootLogin = "true"
-$NSXVTEPNetwork = "OpensO-Mgmt"
+$NSXVTEPNetwork = "Pacific-VTEP"
 
 # Transport Node Profile
-$TransportNodeProfileName = "Host-Transport-Node-Profile"
+$TransportNodeProfileName = "Pacific-Host-Transport-Node-Profile"
 
 # TEP IP Pool
 $TunnelEndpointName = "TEP-IP-Pool"
@@ -96,16 +95,16 @@ $VlanTransportZoneName = "TZ-VLAN"
 $VlanTransportZoneNameHostSwitchName = "edgeswitch"
 
 # Network Segment
-$NetworkSegmentName = "OpensO-Uplink"
+$NetworkSegmentName = "Pacific-Segment"
 $NetworkSegmentVlan = "0"
 
 # T0 Gateway
-$T0GatewayName = "T0-Gateway"
-$T0GatewayInterfaceAddress = "192.168.12.2" # should be a routable address
+$T0GatewayName = "Pacific-T0-Gateway"
+$T0GatewayInterfaceAddress = "172.17.31.119" # should be a routable address
 $T0GatewayInterfacePrefix = "24"
-$T0GatewayInterfaceStaticRouteName = "Static-Route"
+$T0GatewayInterfaceStaticRouteName = "Pacific-Static-Route"
 $T0GatewayInterfaceStaticRouteNetwork = "0.0.0.0/0"
-$T0GatewayInterfaceStaticRouteAddress = "192.168.12.1"
+$T0GatewayInterfaceStaticRouteAddress = "172.17.31.253"
 
 # Uplink Profiles
 $ESXiUplinkProfileName = "ESXi-Host-Uplink-Profile"
@@ -117,7 +116,7 @@ $EdgeUplinkProfileName = "Edge-Uplink-Profile"
 $EdgeUplinkProfilePolicy = "FAILOVER_ORDER"
 $EdgeOverlayUplinkName = "uplink1"
 $EdgeOverlayUplinkProfileActivepNIC = "fp-eth1"
-$EdgeUplinkName = "Uplink"
+$EdgeUplinkName = "tep-uplink"
 $EdgeUplinkProfileActivepNIC = "fp-eth2"
 $EdgeUplinkProfileTransportVLAN = "0"
 $EdgeUplinkProfileMTU = "1600"
@@ -129,16 +128,16 @@ $EdgeClusterName = "Edge-Cluster-01"
 $NSXTMgrDeploymentSize = "small"
 $NSXTMgrvCPU = "6" #override default size
 $NSXTMgrvMEM = "24" #override default size
-$NSXTMgrDisplayName = "openso-nsx-mgr"
-$NSXTMgrHostname = "openso-nsx-mgr.lab.local"
-$NSXTMgrIPAddress = "12.12.12.10"
+$NSXTMgrDisplayName = "pacific-nsx-3"
+$NSXTMgrHostname = "pacific-nsx-3.cpbu.corp"
+$NSXTMgrIPAddress = "172.17.31.118"
 
 # NSX-T Edge Configuration
-$NSXTEdgeDeploymentSize = "large"
+$NSXTEdgeDeploymentSize = "medium"
 $NSXTEdgevCPU = "8" #override default size
 $NSXTEdgevMEM = "32" #override default size
 $NSXTEdgeHostnameToIPs = @{
-    "openso-nsx-edge" = "12.12.12.11"
+    "pacific-nsx-edge-3a" = "172.17.31.116"
 }
 
 # Advanced Configurations
@@ -150,7 +149,7 @@ $addHostByDnsName = 1
 $debug = $true
 $verboseLogFile = "pacific-nsxt-external-vghetto-lab-deployment.log"
 $random_string = -join ((65..90) + (97..122) | Get-Random -Count 8 | % {[char]$_})
-$VAppName = "K8s-Nested-LAB-$random_string"
+$VAppName = "vGhetto-Nested-Project-Pacific-NSX-T-External-Lab-$random_string"
 
 $preCheck = 1
 $confirmDeployment = 1

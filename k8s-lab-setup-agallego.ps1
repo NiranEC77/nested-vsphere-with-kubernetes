@@ -7,10 +7,10 @@ $VIUsername = "administrator@vsphere.local"
 $VIPassword = "VMware1!"
 
 # Full Path to both the Nested ESXi 7.0 VA, Extracted VCSA 7.0 ISO & NSX-T OVAs
-$NestedESXiApplianceOVA = "C:\Users\Administrator\Downloads\Nested_ESXi7.0_Appliance_Template_v1.ova"
-$VCSAInstallerPath = "C:\Users\Administrator\Downloads\VMware-VCSA-all-7.0.0-16386292"
-$NSXTManagerOVA = "C:\Users\Administrator\Downloads\nsx-unified-appliance-3.0.1.0.0.16404476.ova"
-$NSXTEdgeOVA = "C:\Users\Administrator\Downloads\nsx-edge-3.0.1.0.0.16404482.ova"
+$NestedESXiApplianceOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\Nested_ESXi7.0_Appliance_Template_v1.ova"
+$VCSAInstallerPath = "C:\Users\Administrator.OPENSO-DC\Downloads\VMware-VCSA-all-7.0.0-16386292"
+$NSXTManagerOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-unified-appliance-3.0.1.0.0.16404476.ova"
+$NSXTEdgeOVA = "C:\Users\Administrator.OPENSO-DC\Downloads\nsx-edge-3.0.1.0.0.16404482.ova"
 
 # Nested ESXi VMs to deploy
 $NestedESXiHostnameToIPs = @{
@@ -21,9 +21,9 @@ $NestedESXiHostnameToIPs = @{
 
 # Nested ESXi VM Resources
 $NestedESXivCPU = "4"
-$NestedESXivMEM = "64" #GB
-$NestedESXiCachingvDisk = "80" #GB
-$NestedESXiCapacityvDisk = "100" #GB
+$NestedESXivMEM = "128" #GB
+$NestedESXiCachingvDisk = "100" #GB
+$NestedESXiCapacityvDisk = "200" #GB
 
 # VCSA Deployment Configuration
 $VCSADeploymentSize = "tiny"

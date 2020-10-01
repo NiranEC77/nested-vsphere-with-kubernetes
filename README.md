@@ -1,4 +1,4 @@
-# vGhetto Automated vSphere with Kubernetes Lab Deployment
+## Automated vSphere with Kubernetes Lab Deployment
 
 ## Table of Contents
 

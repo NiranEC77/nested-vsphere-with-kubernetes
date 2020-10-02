@@ -67,7 +67,7 @@ $DevOpsUsername = "devops"
 $DevOpsPassword = "VMware1!"
 
 # NSX-T Configuration
-$NSXLicenseKey = "3N2KN-8EHD1-38970-01CKP-04R6Q"
+$NSXLicenseKey = "<>"
 $NSXRootPassword = "VMware1!VMware1!"
 $NSXAdminUsername = "admin"
 $NSXAdminPassword = "VMware1!VMware1!"

@@ -17,7 +17,7 @@ $NestedESXiHostnameToIPs = @{
     "niranec-esx-01.corp.local" = "192.168.110.61"
     "niranec-esx-02.corp.local" = "192.168.110.62"
     "niranec-esx-03.corp.local" = "192.168.110.63"
-    "niranec-esx-04.corp.local" = "192.168.110.64"
+#    "niranec-esx-04.corp.local" = "192.168.110.64"
 }
 
 # Nested ESXi VM Resources

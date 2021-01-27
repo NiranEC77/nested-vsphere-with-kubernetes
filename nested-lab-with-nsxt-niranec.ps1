@@ -2,8 +2,8 @@
 # Website: www.virtuallyghetto.com
 
 # vCenter Server used to deploy vSphere with Kubernetes Lab
-$VIServer = "192.168.110.51"
-$VIUsername = "root"
+$VIServer = "192.168.110.22"
+$VIUsername = "administrator@corp.local"
 $VIPassword = "VMware1!"
 
 # Full Path to both the Nested ESXi 7.0 VA, Extracted VCSA 7.0 ISO & NSX-T OVAs

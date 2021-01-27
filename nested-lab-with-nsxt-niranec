@@ -14,10 +14,10 @@ $NSXTEdgeOVA = "E:\Downloads\nsx-edge-3.1.2.0.0.17476373.ova"
 
 # Nested ESXi VMs to deploy
 $NestedESXiHostnameToIPs = @{
-    "niranec-esx-01.lab.local" = "192.168.110.51"
-    "niranec-esx-02.lab.local" = "192.168.110.52"
-    "niranec-esx-03.lab.local" = "192.168.110.53"
-    "niranec-esx-04.lab.local" = "192.168.110.54"
+    "niranec-esx-01.corp.local" = "192.168.110.61"
+    "niranec-esx-02.corp.local" = "192.168.110.62"
+    "niranec-esx-03.corp.local" = "192.168.110.63"
+    "niranec-esx-04.corp.local" = "192.168.110.64"
 }
 
 # Nested ESXi VM Resources
@@ -29,8 +29,8 @@ $NestedESXiCapacityvDisk = "250" #GB
 # VCSA Deployment Configuration
 $VCSADeploymentSize = "tiny"
 $VCSADisplayName = "niranec-vcsa"
-$VCSAIPAddress = "192.168.110.22"
-$VCSAHostname = "niranec-vcsa.lab.local" #Change to IP if you don't have valid DNS
+$VCSAIPAddress = "192.168.110.30"
+$VCSAHostname = "niranec-vcsa.corp.local" #Change to IP if you don't have valid DNS
 $VCSAPrefix = "24"
 $VCSASSODomainName = "corp.local"
 $VCSASSOPassword = "VMware1!"
@@ -40,8 +40,8 @@ $VCSASSHEnable = "true"
 # General Deployment Configuration for Nested ESXi, VCSA & NSX VMs
 $VMDatacenter = "vSphere-Datacenter"
 $VMCluster = "vSphere-Cluster"
-$VMNetwork = "OpensO-Mgmt"
-$VMDatastore = "iSCSI-10TB"
+$VMNetwork = "niranec-Mgmt"
+$VMDatastore = "Datastore"
 $VMNetmask = "255.255.255.0"
 $VMGateway = "192.168.110.1"
 $VMDNS = "192.168.110.10"
